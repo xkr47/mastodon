@@ -325,7 +325,7 @@ namespace :mastodon do
         prompt.warn 'If the database already exists, this will erase its contents.'
 
         if prompt.yes?('Prepare the database now?')
-          prompt.say 'Running `RAILS_ENV=production rails db:setup` ...'
+          prompt.say 'Running `RAILS_ENV=production bin/rails db:setup` ...'
           prompt.say "\n"
 
           if cmd.run!({ RAILS_ENV: 'production', SAFETY_ASSURED: 1 }, :rails, 'db:setup').failure?
@@ -342,7 +342,7 @@ namespace :mastodon do
         prompt.say 'This may take a while and consume a lot of RAM.'
 
         if prompt.yes?('Compile the assets now?')
-          prompt.say 'Running `RAILS_ENV=production rails assets:precompile` ...'
+          prompt.say 'Running `RAILS_ENV=production bin/rails assets:precompile` ...'
           prompt.say "\n"
 
           if cmd.run!({ RAILS_ENV: 'production' }, :rails, 'assets:precompile').failure?
@@ -783,7 +783,7 @@ namespace :mastodon do
       options = {}
 
       OptionParser.new do |opts|
-        opts.banner = 'Usage: rails mastodon:maintenance:purge_removed_accounts [options]'
+        opts.banner = 'Usage: bin/rails mastodon:maintenance:purge_removed_accounts [options]'
 
         opts.on('-f', '--force', 'Remove all encountered accounts without asking for confirmation') do
           options[:force] = true
