@@ -233,7 +233,7 @@ namespace :mastodon do
       prompt.say "\n"
 
       loop do
-        if prompt.yes?('Do you want to send e-mails from localhost?', default: false)
+        if prompt.yes?('Do/will you have a mail server on localhost for sending e-mails?', default: false)
           env['SMTP_SERVER'] = 'localhost'
           env['SMTP_PORT'] = 25
           env['SMTP_AUTH_METHOD'] = 'none'
@@ -352,6 +352,8 @@ namespace :mastodon do
             prompt.say "\n"
             prompt.say 'Done!'
           end
+        else
+          prompt.say 'Fine, you can do that later with the command `RAILS_ENV=production bin/rails assets:precompile`'
         end
 
         prompt.say "\n"
