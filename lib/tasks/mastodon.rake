@@ -339,7 +339,8 @@ namespace :mastodon do
 
         prompt.say "\n"
         prompt.say 'The final step is compiling CSS/JS assets.'
-        prompt.say 'This may take a while and consume a lot of RAM.'
+        prompt.say 'This may take a while and consume a lot of RAM'
+        prompt.say ' (about 1.1G of free RAM + swap is minimum).'
 
         if prompt.yes?('Compile the assets now?')
           prompt.say 'Running `RAILS_ENV=production bin/rails assets:precompile` ...'
